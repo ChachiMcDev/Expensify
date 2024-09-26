@@ -8,7 +8,7 @@ const EditExpensePage = () => {
     console.log(id)
     return (
         <div>
-            This is from the edit expense component
+            This is from the edit expense component number: {id}
         </div>
     )
 };
