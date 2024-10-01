@@ -1,16 +1,35 @@
 import React from "react";
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
+import ExpenseForm from "./ExpenseForm";
+import { connect, useDispatch, useSelector } from "react-redux";
+import expensesSlice from "../slicereducers/expensesSlice";
 
-const EditExpensePage = () => {
-    const location = useLocation();
-    const [searchParams] = useSearchParams();
-    const id = searchParams.get("id")
-    console.log(id)
+const { editExpense, addExpense } = expensesSlice.actions
+
+const EditExpensePage = (props) => {
+    const dispatch = useDispatch();
+    const { id } = useParams();
+    const getExpenses = useSelector((state) => state.expenses.find((expense) => expense.id === id));
+
     return (
         <div>
-            This is from the edit expense component number: {id}
+
+            <ExpenseForm expense={getExpenses} onSubmit={(expense) => {
+                dispatch(editExpense(expense));
+            }} />
         </div>
     )
 };
 
-export default EditExpensePage
+export default EditExpensePage;
+
+// const mapStateToProps = (state, props) => {
+//     //const id = "e9309366-2f23-44bc-a3df-837e786a1069"
+//     const { id } = useParams();
+
+//     return {
+//         expense: state.expenses.find((expense) => expense.id === id)
+//     }
+// }
+
+// export default connect(mapStateToProps)(EditExpensePage);

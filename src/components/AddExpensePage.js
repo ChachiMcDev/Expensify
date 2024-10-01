@@ -1,20 +1,23 @@
 import React from "react";
 import ExpenseForm from './ExpenseForm';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import expensesSlice from "../slicereducers/expensesSlice";
 
 const { addExpense } = expensesSlice.actions
 
-const AddExpensePage = (props) => (
-    <div>
-        This is from the add expense component
-        <ExpenseForm onSubmit={(expense) => {
-            props.dispatch(addExpense(expense));
+const AddExpensePage = () => {
+    const dispatch = useDispatch();
+    return (
+        <div>
+            This is from the add expense component
+            <ExpenseForm onSubmit={(expense) => {
+                dispatch(addExpense(expense));
 
-        }} />
-    </div>
-);
+            }} />
+        </div>
+    )
+};
 
 
-
-export default connect()(AddExpensePage);
+export default AddExpensePage
+//export default connect()(AddExpensePage);

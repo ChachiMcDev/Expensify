@@ -20,10 +20,11 @@ const store = configureStore();
 //console.log(store.getState());
 
 store.dispatch(addExpense({
+    id: "e9309366-2f23-44bc-a3df-837e786a1069",
     description: 'Water Bill',
     note: 'still paying for it',
     amount: 300,
-    createdAt: 1000
+    createdAt: 1727801255069
 }));
 
 store.dispatch(addExpense({
@@ -41,6 +42,14 @@ store.dispatch(addExpense({
 }));
 
 //store.dispatch(setTextFilter('bill'))
+
+store.dispatch(editExpense({
+    id: "e9309366-2f23-44bc-a3df-837e786a1069",
+    description: 'Water Billfuuuck',
+    note: 'still paying for it',
+    amount: 300,
+    createdAt: 1727801255069
+}));
 
 const state = store.getState();
 const visibleExpenses = getVisibleExpenses(state.expenses, state.filters)

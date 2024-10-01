@@ -13,15 +13,17 @@ import "react-datepicker/dist/react-datepicker.css";
 
 export default (props) => {
 
-    const sendIt = useNavigate();
+    const sendToDashboard = useNavigate();
 
-    const [formVals, setFormVals] = useState({
+    const [formVals, setFormVals] = useState(props.expense ? props.expense : {
         description: '',
         amount: '',
         note: '',
         createdAt: dayjs().valueOf(),
         error: ''
     });
+
+
 
     // const [startDate, setStartDate] = useState(dateNow);
 
@@ -49,12 +51,13 @@ export default (props) => {
             setFormVals({ ...formVals, error: '' });
             //submit values to hoc
             props.onSubmit({
+                ...formVals,
                 description: formVals.description,
                 amount: parseFloat(formVals.amount, 10),
                 note: formVals.note,
                 createdAt: formVals.createdAt
             });
-            sendIt("/");
+            sendToDashboard("/");
         }
     }
 
