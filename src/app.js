@@ -36,7 +36,7 @@ store.dispatch(addExpense({
 store.dispatch(addExpense({
     description: 'Dobby Food',
     note: 'I love you dobbers',
-    amount: 750,
+    amount: 75,
     createdAt: 2000
 }));
 
