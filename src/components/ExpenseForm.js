@@ -5,7 +5,7 @@ import DatePicker from "react-datepicker";
 import { useNavigate } from "react-router-dom";
 import "react-datepicker/dist/react-datepicker.css";
 
-//here we go again
+//not quite as automatic as i wanted but whatever
 
 //const dateNow = dayjs().valueOf();
 
