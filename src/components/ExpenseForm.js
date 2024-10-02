@@ -5,11 +5,6 @@ import DatePicker from "react-datepicker";
 import { useNavigate } from "react-router-dom";
 import "react-datepicker/dist/react-datepicker.css";
 
-//not quite as automatic as i wanted but whatever
-
-//const dateNow = dayjs().valueOf();
-
-
 
 export default (props) => {
 
@@ -24,9 +19,6 @@ export default (props) => {
     });
 
 
-
-    // const [startDate, setStartDate] = useState(dateNow);
-
     const onDescriptionChange = (e) => { setFormVals({ ...formVals, description: e.target.value }) };
     const onAmountChange = (e) => {
         const amount = e.target.value;
@@ -37,7 +29,7 @@ export default (props) => {
     const onNoteChange = (e) => { setFormVals({ ...formVals, note: e.target.value }) };
     const onDateChange = (createdAt) => {
         if (createdAt) {
-            setFormVals({ ...formVals, createdAt: dayjs(createdAt).valueOf() })
+            setFormVals({ ...formVals, createdAt: createdAt.valueOf() });
         }
     };
 

@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
+import dayjs from 'dayjs';
 
 const filterDefaultState = {
     text: '',
     sortBy: 'date',
-    startDate: undefined,
-    endDate: undefined
+    startDate: dayjs().startOf('month').valueOf(),
+    endDate: dayjs().endOf('month').valueOf()
 }
 
 

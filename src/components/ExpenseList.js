@@ -1,25 +1,32 @@
 import React from "react";
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import ExpenseListItem from "./ExpenseListItem";
 import getVisibleExpenses from '../selectors/expenses';
 
-const ExpenseList = (props) => (
-    <div>
-        <h1>Expesnse List</h1>
-        {props.expenses.map((expense) => (
-            <div key={expense.id}>
-                <ExpenseListItem {...expense} />
-            </div>
-        ))}
+const ExpenseList = (props) => {
+    const exps = useSelector(state => state.expenses);
+    const filts = useSelector(state => state.filters);
+    const expenses = getVisibleExpenses(exps, filts)
+    return (
+        <div>
+            <h1>Expesnse List</h1>
+            {expenses.map((expense) => (
+                <div key={expense.id}>
+                    <ExpenseListItem {...expense} />
+                </div>
+            ))}
 
-    </div>
-);
+        </div>
+    )
+};
 
-const mapStateToProps = (state) => {
-    return {
-        expenses: getVisibleExpenses(state.expenses, state.filters)
-    }
-}
+export default ExpenseList;
 
-export default connect(mapStateToProps)(ExpenseList);
+// const mapStateToProps = (state) => {
+//     return {
+//         expenses: getVisibleExpenses(state.expenses, state.filters)
+//     }
+// }
+
+// export default connect(mapStateToProps)(ExpenseList);
 

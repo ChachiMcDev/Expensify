@@ -1,12 +1,15 @@
 import React from "react";
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import ExpenseForm from "./ExpenseForm";
-import { connect, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import expensesSlice from "../slicereducers/expensesSlice";
+import { useNavigate } from "react-router-dom";
 
-const { editExpense, addExpense } = expensesSlice.actions
 
 const EditExpensePage = (props) => {
+    const { editExpense, removeExpense } = expensesSlice.actions
+    const sendToDashboard = useNavigate();
+
     const dispatch = useDispatch();
     const { id } = useParams();
     const getExpenses = useSelector((state) => state.expenses.find((expense) => expense.id === id));
@@ -17,6 +20,12 @@ const EditExpensePage = (props) => {
             <ExpenseForm expense={getExpenses} onSubmit={(expense) => {
                 dispatch(editExpense(expense));
             }} />
+            <button onClick={
+                () => {
+                    dispatch(removeExpense({ id }))
+                    sendToDashboard('/');
+                }
+            }>Remove</button>
         </div>
     )
 };
