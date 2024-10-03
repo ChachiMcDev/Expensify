@@ -51,10 +51,10 @@ store.dispatch(editExpense({
     createdAt: 1727801255069
 }));
 
-const state = store.getState();
-const visibleExpenses = getVisibleExpenses(state.expenses, state.filters)
-console.log('state', state)
-console.log('visible expesnses', visibleExpenses)
+// const state = store.getState();
+// const visibleExpenses = getVisibleExpenses(state.expenses, state.filters)
+// console.log('state', state)
+// console.log('visible expesnses', visibleExpenses)
 
 const jsx = (
     <Provider store={store}>
