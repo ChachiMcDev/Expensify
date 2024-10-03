@@ -27,7 +27,9 @@
     "webpack-dev-server": "^5.1.0"
   },
   "scripts": {
-    "build": "webpack",
+    "serve": "live-server public/",
+    "build:dev": "webpack",
+    "build:prod": "webpack --env production",
     "dev-server": "webpack-dev-server",
     "test": "jest"
   },
@@ -38,6 +40,7 @@
     "@reduxjs/toolkit": "^2.2.7",
     "date-fns": "^4.1.0",
     "dayjs": "^1.11.13",
+    "live-server": "^1.2.2",
     "normalize.css": "^8.0.1",
     "react": "^18.3.1",
     "react-date-range": "^2.0.1",
