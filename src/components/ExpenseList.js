@@ -9,7 +9,7 @@ const ExpenseList = (props) => {
     const expenses = getVisibleExpenses(exps, filts)
     return (
         <div>
-            <h1>Expesnse List</h1>
+            <h1>Expenses List</h1>
             {expenses.map((expense) => (
                 <div key={expense.id}>
                     <ExpenseListItem {...expense} />
