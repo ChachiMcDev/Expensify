@@ -1,5 +1,5 @@
 const path = require('path')
-
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
 module.exports = (env) => {
     const { production } = env;
@@ -20,16 +20,21 @@ module.exports = (env) => {
             compress: true,
             port: 9000,
         },
+        plugins: [new MiniCssExtractPlugin({
+            filename: 'styles.css'
+        })],
         module: {
             rules: [{
                 use: 'babel-loader',
                 test: /\.js$/,
                 exclude: /node_modules/
             }, {
-                use: ['style-loader', 'css-loader', 'sass-loader'],
-                test: /\.s?css$/
+                //use: ['style-loader', 'css-loader', 'sass-loader'],
+                test: /\.s?css$/i,
+                use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
             }]
         }
+
     }
 
 }

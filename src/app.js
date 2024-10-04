@@ -31,14 +31,14 @@ store.dispatch(addExpense({
     description: 'Gas Bill',
     note: 'still paying for gas',
     amount: 500,
-    createdAt: -3000
+    createdAt: 1727801255069
 }));
 
 store.dispatch(addExpense({
     description: 'Dobby Food',
     note: 'I love you dobbers',
     amount: 75,
-    createdAt: 2000
+    createdAt: 1727801255069
 }));
 
 //store.dispatch(setTextFilter('bill'))
