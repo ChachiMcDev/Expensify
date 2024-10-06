@@ -1,7 +1,10 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import { configureStore, combineReducers, applyMiddleware, compose } from '@reduxjs/toolkit';
 import expensesSlice from '../slicereducers/expensesSlice';
 import filtersSlice from '../slicereducers/filterSlice';
+import { thunk } from 'redux-thunk';
 
+const middlewareEnhancer = applyMiddleware(thunk);
+const composedEnhancers = compose(middlewareEnhancer)
 
 export default () => {
 
@@ -11,7 +14,8 @@ export default () => {
     });
 
     const store = configureStore({
-        reducer: rootReducer
+        reducer: rootReducer,
+        middleware: () => [thunk]
     });
 
     return store;

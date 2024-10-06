@@ -4,14 +4,15 @@ import ExpenseListItem from "./ExpenseListItem";
 import getVisibleExpenses from '../selectors/expenses';
 
 const ExpenseList = (props) => {
+
     const exps = useSelector(state => state.expenses);
     const filts = useSelector(state => state.filters);
     const expenses = getVisibleExpenses(exps, filts)
     return (
         <div>
             <h1>Expenses List</h1>
-            {expenses.map((expense) => (
-                <div key={expense.id}>
+            {expenses.map((expense, iny) => (
+                <div key={iny}>
                     <ExpenseListItem {...expense} />
                 </div>
             ))}
@@ -29,4 +30,3 @@ export default ExpenseList;
 // }
 
 // export default connect(mapStateToProps)(ExpenseList);
-

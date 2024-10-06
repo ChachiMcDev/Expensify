@@ -1,18 +1,19 @@
 import React from "react";
-import dayjs from "dayjs";
 import { Link } from "react-router-dom";
+import moment from "moment";
+import numeral from 'numeral';
 
 
 
-const ExpenseListItem = ({ id, description, amount, createdAt, note }) => {
+const ExpenseListItem = ({ _id, description, amount, createdAt, note }) => {
 
     return (
         <div>
-            <Link to={`/edit/${id}`}>
+            <Link to={`/edit/${_id}`}>
                 <h3>Description: {description}</h3>
             </Link>
-            <p>Amount: {amount}</p>
-            <p>Created At: {dayjs(createdAt).format('MMM DD YYYY')}</p>
+            <p>Amount: {numeral(amount / 100).format('$0,0.00')}</p>
+            <p>Created At: {moment(createdAt).format('MMMM Do, YYYY')}</p>
             <p>Notes: {note}</p>
         </div>
     )

@@ -4,17 +4,21 @@ import dayjs from 'dayjs';
 import DatePicker from "react-datepicker";
 import { useNavigate } from "react-router-dom";
 import "react-datepicker/dist/react-datepicker.css";
+import moment from 'moment';
+
+
 
 
 export default (props) => {
-
+    //console.log(id.toString());
     const sendToDashboard = useNavigate();
 
     const [formVals, setFormVals] = useState(props.expense ? props.expense : {
+        //_id: ObjectId,
         description: '',
         amount: '',
         note: '',
-        createdAt: dayjs().valueOf(),
+        createdAt: moment().valueOf(),
         error: ''
     });
 
@@ -47,7 +51,7 @@ export default (props) => {
                 description: formVals.description,
                 amount: parseFloat(formVals.amount, 10),
                 note: formVals.note,
-                createdAt: formVals.createdAt
+                createdAt: formVals.createdAt.valueOf()
             });
             sendToDashboard("/");
         }
