@@ -3,6 +3,8 @@ import { connect, useSelector } from 'react-redux';
 import ExpenseListItem from "./ExpenseListItem";
 import getVisibleExpenses from '../selectors/expenses';
 
+
+
 const ExpenseList = (props) => {
 
     const exps = useSelector(state => state.expenses);
@@ -19,6 +21,10 @@ const ExpenseList = (props) => {
 
         </div>
     )
+
+        ;
+
+
 };
 
 export default ExpenseList;

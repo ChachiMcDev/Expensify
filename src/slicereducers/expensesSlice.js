@@ -45,8 +45,8 @@ const expensesSlice = createSlice({
             // state.push(action.payload)
         });
         builder.addCase(postExpense.fulfilled, (state, action) => {
-            // state.push(action.payload)
-            return [...state, { ...action.payload }];
+            state.push(action.payload)
+            //return [...state, { ...action.payload }];
 
         });
         builder.addCase(removeExpenseWithId.fulfilled, (state, action) => {

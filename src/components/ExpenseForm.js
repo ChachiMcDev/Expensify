@@ -5,6 +5,7 @@ import DatePicker from "react-datepicker";
 import { useNavigate } from "react-router-dom";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from 'moment';
+import { useSelector } from "react-redux";
 
 
 
@@ -12,9 +13,10 @@ import moment from 'moment';
 export default (props) => {
     //console.log(id.toString());
     const sendToDashboard = useNavigate();
-
+    const authId = useSelector((state) => state.auth.userid);
     const [formVals, setFormVals] = useState(props.expense ? props.expense : {
         //_id: ObjectId,
+        userid: authId,
         description: '',
         amount: '',
         note: '',
@@ -53,7 +55,7 @@ export default (props) => {
                 note: formVals.note,
                 createdAt: formVals.createdAt.valueOf()
             });
-            sendToDashboard("/");
+            sendToDashboard("/dashboard");
         }
     }
 
